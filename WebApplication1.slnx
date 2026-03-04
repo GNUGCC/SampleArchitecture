@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ClassLibrary1/ClassLibrary1.csproj" Id="ba5d8947-d1f2-4193-ba75-3fecb414ca6a" />
+  <Project Path="TestProject1/TestProject1.csproj" Id="6423b13c-c6df-4017-9bc2-e7162ab17d7c" />
+  <Project Path="WebApplication1/WebApplication1.csproj" />
+</Solution>
