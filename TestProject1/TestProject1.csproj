@@ -19,7 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj" />
+    <ProjectReference Include="..\Database.Application\Application.Impl.csproj" />
+    <ProjectReference Include="..\Database.Delivery\Database.Delivery.csproj" />
+    <ProjectReference Include="..\Database.Factory\Domain.Factory.csproj" />
   </ItemGroup>
 
   <ItemGroup>

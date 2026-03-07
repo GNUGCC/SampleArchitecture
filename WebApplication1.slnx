@@ -1,5 +1,21 @@
 <Solution>
-  <Project Path="ClassLibrary1/ClassLibrary1.csproj" Id="ba5d8947-d1f2-4193-ba75-3fecb414ca6a" />
+  <Folder Name="/Application/">
+    <Project Path="Database.Application/Application.Impl.csproj" Id="a6652865-6b22-4c46-8ff3-29efe0e28c44" />
+    <Project Path="Nibers.Interface/Application.Interface.csproj" Id="be3c09b9-6eb0-446b-b0f3-27ee2f39af5f" />
+  </Folder>
+  <Folder Name="/Delivery/">
+    <Project Path="Database.Delivery/Database.Delivery.csproj" Id="3e590e27-38d4-42e3-a9c3-9f332c05e75a" />
+  </Folder>
+  <Folder Name="/Domain/">
+    <Project Path="Application.Configure/Domain.Configure.csproj" Id="1549b6f5-f7da-403c-b754-1db2469c7aae" />
+    <Project Path="Database.Factory/Domain.Factory.csproj" Id="3645cc7b-f723-49b8-988a-b39eda30ea17" />
+    <Project Path="Domain.Command/Domain.Command.csproj" Id="cca821ed-c9af-47d1-9740-bce6ead52d0e" />
+    <Project Path="Domain.Impl/Domain.Account.csproj" Id="cabd5d6c-a701-46c6-8e97-978bb928646f" />
+    <Project Path="Domain.Interface/Domain.Menu.csproj" Id="3c9003cb-5e21-43b8-8f06-949b6e8b6024" />
+  </Folder>
+  <Folder Name="/Infranstracture/">
+    <Project Path="Infranstracture.Impl/Infranstracture.Test.csproj" Id="120478c6-78ac-4266-b4b6-dfba7037fb5e" />
+  </Folder>
   <Project Path="TestProject1/TestProject1.csproj" Id="6423b13c-c6df-4017-9bc2-e7162ab17d7c" />
   <Project Path="WebApplication1/WebApplication1.csproj" />
 </Solution>
