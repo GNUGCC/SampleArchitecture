@@ -3,7 +3,7 @@ using Application.Interface.Menu;
 
 namespace Application.Impl;
 
-public readonly struct Menu(string[] items, IMenuRepository repository) : IMenu
+readonly struct TestMenu(string[] items, IMenuRepository repository) : IMenu
 {
     public int Count { get; }
 
@@ -29,7 +29,10 @@ public readonly struct Menu(string[] items, IMenuRepository repository) : IMenu
 
     public MenuItem[]? GetMenuItems()
     {
-        return [];
+        var test = new MenuItem("Test1");
+        test.SetCommand(default);
+
+        return [new("Test1"), test];
     }
 
     public MenuItem[]? GetMenuItems(Func<MenuItem, bool> selector)

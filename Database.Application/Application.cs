@@ -10,7 +10,7 @@ readonly struct TestApplication(IMenuRepository menuRepository, IAppConfigReposi
     async Task<IMenu> IApplication.GetCommandMenu()
     {
         var menus = await menuRepository.QueryMenu();
-        return new Menu(menus, menuRepository);
+        return new TestMenu(menus, menuRepository);
     }
 
     Task<AppConfigure> IApplication.LoadConfigure()

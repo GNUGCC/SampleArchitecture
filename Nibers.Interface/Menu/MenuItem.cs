@@ -6,13 +6,13 @@ public struct MenuItem
 {
     string Name { get; }
 
-    string Description { get; }
+    string? Description { get; }
 
     bool Enabled { get; }
 
     ICommand? Command { get; set; }
 
-    internal MenuItem(string name, string description, bool enabled = true)
+    public MenuItem(string name, string? description = default, bool enabled = true)
     {
         Name = name;
         Description = description;
@@ -29,7 +29,7 @@ public struct MenuItem
         if (Enabled is true) command?.Execute();
     }
 
-    internal MenuItem SetCommand(ICommand? command)
+    public MenuItem SetCommand(ICommand? command)
     {
         Command = command;
         return this;
