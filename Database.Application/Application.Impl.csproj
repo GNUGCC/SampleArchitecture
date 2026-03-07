@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain.Interface\Domain.Menu.csproj" />
     <ProjectReference Include="..\Nibers.Interface\Application.Interface.csproj" />
   </ItemGroup>
 

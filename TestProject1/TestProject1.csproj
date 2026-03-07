@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Database.Application\Application.Impl.csproj" />
-    <ProjectReference Include="..\Database.Delivery\Database.Delivery.csproj" />
+    <ProjectReference Include="..\Database.Delivery\Delivery.Extensions.csproj" />
     <ProjectReference Include="..\Database.Factory\Domain.Factory.csproj" />
   </ItemGroup>
 

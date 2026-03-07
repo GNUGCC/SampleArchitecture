@@ -1,6 +1,4 @@
-﻿using Domain.Configure;
-
-namespace Domain.AppConfigure;
+﻿namespace Domain.AppConfigure;
 
 public interface IAppConfigRepository
 {

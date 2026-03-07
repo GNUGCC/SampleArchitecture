@@ -5,7 +5,7 @@ using Domain.AppConfigure;
 
 namespace Application.Impl;
 
-readonly struct TestApplication(IMenuRepository menuRepository, IAppConfigRepository configRepository) : IApplication
+public readonly struct TestApplication(IMenuRepository menuRepository, IAppConfigRepository configRepository) : IApplication
 {
     async Task<IMenu> IApplication.GetCommandMenu()
     {
