@@ -1,13 +1,24 @@
 ﻿namespace Domain.AppConfigure;
 
-public struct AppConfigure
+public readonly struct AppConfigure
 {
-    public string Name { get; set; }
+    string Name { get; }
 
-    public string Description { get; set; }
+    string Description { get; }
 
-    public static Task<bool> SaveConfigure()
+    AppConfigure(string name, string description)
     {
-        return Task.FromResult(true);
+        Name = name;
+        Description = description; 
+    }
+
+    public static AppConfigure SaveConfigure(string name, string description)
+    {
+        return new(name, description);
+    }
+
+    public readonly void Export(Action<string, string> export)
+    {
+        new AppConfigure(Name, Description).Export(export);
     }
 }
