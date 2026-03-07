@@ -1,4 +1,5 @@
 ﻿using Application.Interface.Menu;
+using Domain.AppConfigure;
 
 namespace Application.Interface;
 

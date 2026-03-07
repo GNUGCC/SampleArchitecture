@@ -1,19 +1,20 @@
 ﻿using Application.Interface;
 using Application.Interface.Menu;
-using Application.Impl.Application.Menu;
 using Domain.Menu;
+using Domain.AppConfigure;
 
 namespace Application.Impl;
 
-readonly struct TestApplication(IMenuRepository repository) : IApplication
+readonly struct TestApplication(IMenuRepository menuRepository, IAppConfigRepository configRepository) : IApplication
 {
-    Task<IMenu> IApplication.GetCommandMenu()
+    async Task<IMenu> IApplication.GetCommandMenu()
     {
-        return Task.FromResult<IMenu>(new Menu(repository));
+        var menus = await menuRepository.QueryMenu();
+        return new Menu(menus, menuRepository);
     }
 
     Task<AppConfigure> IApplication.LoadConfigure()
     {
-        throw new NotImplementedException();
+        return configRepository.AppConfigure();
     }
 }

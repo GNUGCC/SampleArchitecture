@@ -1,10 +1,9 @@
 ﻿using Domain.Menu;
-using Domain.Configure;
 using Application.Interface.Menu;
 
-namespace Application.Impl.Menu;
+namespace Application.Impl;
 
-public readonly struct Menu(IMenuRepository repository) : IMenu
+public readonly struct Menu(string[] items, IMenuRepository repository) : IMenu
 {
     public int Count { get; }
 

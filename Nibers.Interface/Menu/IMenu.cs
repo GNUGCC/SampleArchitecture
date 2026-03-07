@@ -1,4 +1,4 @@
-﻿using Domain.Configure;
+﻿using Domain.Menu;
 
 namespace Application.Interface.Menu;
 

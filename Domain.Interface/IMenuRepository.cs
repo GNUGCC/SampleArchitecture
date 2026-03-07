@@ -2,4 +2,7 @@
 
 public interface IMenuRepository
 {
+    Task<MenuConfigure> QueryMenuConfigure();
+
+    Task<string[]> QueryMenu();
 }

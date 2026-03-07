@@ -1,4 +1,4 @@
-﻿namespace Domain.Configure;
+﻿namespace Domain.AppConfigure;
 
 public struct AppConfigure
 {
