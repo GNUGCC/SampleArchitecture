@@ -2,31 +2,16 @@
 
 namespace Application.Interface.Menu;
 
-public readonly struct MenuItem
+public readonly struct MenuItem(string name, string? description = default, bool enabled = true, ICommand? command = default)
 {
-    readonly ICommand? _command;
-
-    string Name { get; }
-
-    string? Description { get; }
-
-    bool Enabled { get; }
-
-    public MenuItem(string name, string? description = default, bool enabled = true, ICommand? command = default)
-    {
-        Name = name;
-        Description = description;
-        Enabled = enabled;
-        _command = command;
-    }
-
     public readonly void Execute()
     {
-        Execute(_command);
+        Execute(command);
     }
 
     public readonly void Execute(ICommand? command)
     {
-        if (Enabled is true) command?.Execute();
+        if (enabled is false || command is null) return;
+        command.Execute();
     }
 }

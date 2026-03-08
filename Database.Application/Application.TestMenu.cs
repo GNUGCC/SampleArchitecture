@@ -30,8 +30,6 @@ readonly struct TestMenu(string[] items, IMenuRepository repository) : IMenu
     public MenuItem[]? GetMenuItems()
     {
         var test = new MenuItem("Test1");
-        test.SetCommand(default);
-
         return [new("Test1"), test];
     }
 
