@@ -1,4 +1,4 @@
-﻿namespace Domain.Menu;
+﻿namespace Application.Interface.Menu;
 
 public readonly struct MenuConfigure
 {

@@ -18,4 +18,9 @@ public readonly struct TestApplication(IMenuRepository menuRepository, IAppConfi
     {
         return configRepository.AppConfigure();
     }
+
+    Task<MenuConfigure> IApplication.QueryMenuConfigure()
+    {
+        return Task.FromResult(new MenuConfigure());
+    }
 }

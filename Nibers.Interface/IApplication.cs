@@ -7,5 +7,7 @@ public interface IApplication
 {
     Task<AppConfigure> LoadConfigure();
 
+    Task<MenuConfigure> QueryMenuConfigure();
+
     Task<IMenu> GetCommandMenu();
 }
