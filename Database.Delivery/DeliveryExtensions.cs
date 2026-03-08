@@ -12,13 +12,20 @@ namespace Delivery.Extensions;
 
 public static class DeliveryExtensions
 {
-    public static IServiceCollection AddApplications(this IServiceCollection services)
-    {
-        services.AddSingleton<IApplication>(x => new TestApplication());
+    public static IServiceCollection AddApplicationLayers(this IServiceCollection services)
+    {        
         services.AddSingleton<IMenuRepository>(x => new TestMenuRepository());
         services.AddSingleton<IAppConfigRepository>(x => new TestAppConfigRepository());
         services.AddSingleton<IAccountRepository>(x => new TestAccountRepository());
         services.AddSingleton<IDomainRepositoryFactory>(x => default);
+        services.AddSingleton<IApplication>(x =>
+        {
+            var menuRepository = x.GetRequiredService<IMenuRepository>();
+            var appConfigRepository = x.GetRequiredService<IAppConfigRepository>();
+            var accountRespotiroy = x.GetRequiredService<IAccountRepository>();
+
+            return new TestApplication(menuRepository, appConfigRepository, accountRespotiroy);
+        });
 
         return services;
     }

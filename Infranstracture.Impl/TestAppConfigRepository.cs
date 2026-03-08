@@ -4,7 +4,7 @@ namespace Infranstracture.Test;
 
 public readonly struct TestAppConfigRepository : IAppConfigRepository
 {
-    Task<AppConfigure> IAppConfigRepository.AppConfigure()
+    Task<AppConfigure> IAppConfigRepository.LoadAppConfigure()
     {
         throw new NotImplementedException();
     }

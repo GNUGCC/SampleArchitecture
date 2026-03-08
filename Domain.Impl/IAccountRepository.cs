@@ -2,4 +2,5 @@
 
 public interface IAccountRepository
 {
+    Task<AccountConfigure> LoadAccountConfigure();
 }

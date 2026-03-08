@@ -14,9 +14,14 @@ public readonly struct TestApplication(IMenuRepository menuRepository, IAppConfi
         return new TestMenu(menus, menuRepository);
     }
 
+    Task<AccountConfigure> IApplication.LoadAccountConfugure()
+    {
+        return accountRepository.LoadAccountConfigure();
+    }
+
     Task<AppConfigure> IApplication.LoadConfigure()
     {
-        return configRepository.AppConfigure();
+        return configRepository.LoadAppConfigure();
     }
 
     Task<MenuConfigure> IApplication.QueryMenuConfigure()
