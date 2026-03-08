@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Database.Application\Application.Impl.csproj" />
     <ProjectReference Include="..\Database.Factory\Domain.Factory.csproj" />
+    <ProjectReference Include="..\Infranstracture.Impl\Infranstracture.Test.csproj" />
   </ItemGroup>
 
 </Project>

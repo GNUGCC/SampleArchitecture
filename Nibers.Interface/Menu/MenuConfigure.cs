@@ -1,6 +1,8 @@
-﻿namespace Domain.Menu;
+﻿using Domain.Menu;
 
-public readonly struct MenuConfigure
+namespace Application.Interface.Menu;
+
+public readonly struct MenuConfigure(IMenuRepository repository)
 {
     readonly static ICollection<string> _titles = [];
     readonly static ICollection<bool> _enableds = [];
@@ -9,7 +11,8 @@ public readonly struct MenuConfigure
 
     public bool Enabled { set { _enableds.Add(value); } }
 
-    internal void Build()
+    internal static MenuItem[] Build()
     {
+        return [.. _titles.Select(x => new MenuItem(x))];
     }
 }

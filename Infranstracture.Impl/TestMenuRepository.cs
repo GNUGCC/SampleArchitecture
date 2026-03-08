@@ -1,16 +1,20 @@
 ﻿using Domain.Menu;
-using Domain.Account;
 
 namespace Infranstracture.Test;
 
-public readonly struct TestRepository : IMenuRepository, IAccountRepository
+public readonly struct TestMenuRepository : IMenuRepository
 {
+    Task<int> IMenuRepository.AddMenu()
+    {
+        throw new NotImplementedException();
+    }
+
     Task<string[]> IMenuRepository.QueryMenu()
     {
         throw new NotImplementedException();
     }
 
-    Task<MenuConfigure> IMenuRepository.QueryMenuConfigure()
+    Task<int> IMenuRepository.UpdateMenu()
     {
         throw new NotImplementedException();
     }

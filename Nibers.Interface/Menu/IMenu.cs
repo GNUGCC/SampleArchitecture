@@ -1,6 +1,4 @@
-﻿using Domain.Menu;
-
-namespace Application.Interface.Menu;
+﻿namespace Application.Interface.Menu;
 
 public interface IMenu
 {

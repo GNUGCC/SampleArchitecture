@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain.AppConfig\Domain.AppConfigure.csproj" />
+    <ProjectReference Include="..\Domain.Impl\Domain.Account.csproj" />
     <ProjectReference Include="..\Domain.Interface\Domain.Menu.csproj" />
   </ItemGroup>
 
