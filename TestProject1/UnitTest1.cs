@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Infranstracture.Interface;
+
 using Application.Interface;
-using Application.Impl.Extensions;
 using Domain.Factory;
-using Delivery.Application;
+using Delivery.Extensions;
 
 namespace TestProject1
 {
@@ -27,7 +26,7 @@ namespace TestProject1
         public void Setup()
         {
             _serviceProvider = Host.CreateDefaultBuilder()
-                .ConfigureServices(x => x.AddTestDatabase())
+                .ConfigureServices(x => x.AddApplication())
                 .ConfigureHostConfiguration(x => x.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", optional: false))
                 .Build().Services;
 

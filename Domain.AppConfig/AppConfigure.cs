@@ -2,14 +2,17 @@
 
 public readonly struct AppConfigure
 {
+    readonly IAppConfigRepository _repository;
+
     string Name { get; }
 
     string Description { get; }
 
-    AppConfigure(string name, string description)
+    AppConfigure(string name, string description, IAppConfigRepository repository)
     {
         Name = name;
-        Description = description; 
+        Description = description;
+        _repository = repository;
     }
 
     public static AppConfigure SaveConfigure(string name, string description)
