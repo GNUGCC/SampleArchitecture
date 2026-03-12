@@ -21,7 +21,7 @@ public readonly struct TestApplication(IDomainRepositoryFactory repository) : IA
         return new TestMenu(menus, _menuRepository);
     }
 
-    Task<AccountConfigure> IApplication.LoadAccountConfugure()
+    Task<AccountConfigure> IApplication.LoadAccountConfigure()
     {
         return _accountRepository.LoadAccountConfigure();
     }
@@ -33,6 +33,6 @@ public readonly struct TestApplication(IDomainRepositoryFactory repository) : IA
 
     Task<MenuConfigure> IApplication.QueryMenuConfigure()
     {
-        return Task.FromResult(new MenuConfigure());
+        return Task.FromResult(new MenuConfigure(_menuRepository));
     }
 }
