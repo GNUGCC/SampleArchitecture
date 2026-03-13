@@ -25,4 +25,10 @@ public readonly struct DevlieryApplication(IApplication application)
     {
         return application.SelectItem(menuItem);
     }
+
+    internal DeliveryResponse QueryMenu(DeliveryRequest deliveryRequest)
+    {
+        var result = application.QueryMenu(deliveryRequest.Parameters, deliveryRequest.Datas);
+        return DeliveryResponse.Create(result.menu, result.menuitem);
+    }
 }

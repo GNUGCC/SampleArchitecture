@@ -41,6 +41,11 @@ public readonly struct TestApplication(IDomainRepositoryFactory repository) : IA
         return await configure.Task;
     }
 
+    (string[] menu, string[] menuitem) IApplication.QueryMenu(string[] source, string[] items)
+    {
+        throw new NotImplementedException();
+    }
+
     Task<MenuConfigure> IApplication.QueryMenuConfigure()
     {
         return Task.FromResult(new MenuConfigure(_menuRepository));
