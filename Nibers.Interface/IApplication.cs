@@ -1,6 +1,5 @@
 ﻿using Application.Menu;
 using Domain.Account;
-using Domain.Menu;
 
 namespace Application.Interface;
 

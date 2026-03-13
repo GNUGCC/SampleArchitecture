@@ -1,5 +1,5 @@
-﻿using Application.Interface;
-using Application.Interface.Menu;
+﻿using Application.Menu;
+using Application.Interface;
 using Domain.Menu;
 using Domain.Factory;
 using Domain.Account;
@@ -23,14 +23,14 @@ public readonly struct TestApplication(IDomainRepositoryFactory repository) : IA
 
     Task<AccountConfigure> IApplication.LoadAccountConfigure()
     {
-        return _accountRepository.LoadAccountConfigure();
+        throw new NotImplementedException();
     }
 
     async Task<(string, string)> IApplication.LoadConfigure()
     {
         var configure = new TaskCompletionSource<(string, string)>();
         var result = await _appConfigRepository.LoadAppName();
-        result.Export((name, line) => configure.SetResult((name, line)));
+        //result.Export((name, line) => configure.SetResult((name, line)));
 
         return await configure.Task;
     }

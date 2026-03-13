@@ -1,11 +1,11 @@
 ﻿using Application.Interface;
-using Domain.Menu;
+using Application.Menu;
 
 namespace Delivery.Application;
 
 readonly struct DevlieryApplication(IApplication application)
 {
-    internal Task<string, string> InitClientSystem()
+    internal Task<(string, string)> InitClientSystem()
     {
         return application.LoadConfigure();
     }

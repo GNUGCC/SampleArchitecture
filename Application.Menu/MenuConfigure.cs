@@ -1,4 +1,6 @@
-﻿namespace Domain.Menu;
+﻿using Domain.Menu;
+
+namespace Application.Menu;
 
 public readonly struct MenuConfigure(IMenuRepository repository)
 {

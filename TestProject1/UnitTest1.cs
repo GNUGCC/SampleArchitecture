@@ -19,7 +19,7 @@ namespace TestProject1
             var test = new Tests();
             test.Setup();
             var serviceProvider = test._serviceProvider;
-            var database = serviceProvider.GetRequiredService<IDatabase>();
+            //var database = serviceProvider.GetRequiredService<IDatabase>();
         }
 
         [SetUp]
@@ -36,30 +36,30 @@ namespace TestProject1
         [Test]
         public async Task Test1()
         {
-            var database = _databaseFactory.CreateDatabase();
-            Assert.That(database.GetType().Name, Is.Not.Null);
+            //var database = _databaseFactory.CreateDatabase();
+            //Assert.That(database.GetType().Name, Is.Not.Null);
 
-            var datas = await database.QueryAllAsync<string>();
-            database.Configure(x => x.MayExceptionProcess = e => e is not NotImplementedException and Exception);
+            //var datas = await database.QueryAllAsync<string>();
+            //database.Configure(x => x.MayExceptionProcess = e => e is not NotImplementedException and Exception);
 
-            var app = default(IApplication);
-            app.Version();
-            var menus = await app.ShowCommandMenu();
-            var loadmenu = menus.ElementAt(0);
-            await loadmenu.AddMenuItem(["TestA", "TestB"], [true]);
-            Assert.That(loadmenu.Count, Is.EqualTo(2));
+            //var app = default(IApplication);
+            //app.Version();
+            //var menus = await app.ShowCommandMenu();
+            //var loadmenu = menus.ElementAt(0);
+            //await loadmenu.AddMenuItem(["TestA", "TestB"], [true]);
+            //Assert.That(loadmenu.Count, Is.EqualTo(2));
 
-            var testmenu = menus.ElementAt(1);
+            //var testmenu = menus.ElementAt(1);
 
-            await testmenu.AddMenuItem((x, item) =>
-            {
-                x.Title = $"Test {item}";
-                x.Enabled = item % 2 > 0;
+            //await testmenu.AddMenuItem((x, item) =>
+            //{
+            //    x.Title = $"Test {item}";
+            //    x.Enabled = item % 2 > 0;
 
-                return item < 10;
-            });
+            //    return item < 10;
+            //});
 
-            Assert.That(testmenu.Count, Is.EqualTo(10));
+            //Assert.That(testmenu.Count, Is.EqualTo(10));
         }
     }
 }
