@@ -1,10 +1,15 @@
 ﻿using Application.Interface;
 using Application.Interface.Menu;
+using Domain.AppConfigure;
 
 namespace Delivery.Application;
 
 readonly struct DevlieryApplication(IApplication application)
 {
+    internal Task<AppConfigure> QueryAppConfigure()
+    {
+    }
+
     internal Task<(string, string)> InitClientSystem()
     {
         return application.LoadConfigure();
