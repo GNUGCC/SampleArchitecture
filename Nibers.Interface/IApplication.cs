@@ -1,4 +1,4 @@
-﻿using Application.Menu;
+﻿using Application.Interface.Menu;
 using Domain.Account;
 
 namespace Application.Interface;

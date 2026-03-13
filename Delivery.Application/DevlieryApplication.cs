@@ -1,5 +1,5 @@
 ﻿using Application.Interface;
-using Application.Menu;
+using Application.Interface.Menu;
 
 namespace Delivery.Application;
 
