@@ -8,4 +8,9 @@ readonly struct CartLogic : ICart
     {
         throw new NotImplementedException();
     }
+
+    Task<CartConfigure> ICart.QueryCartConfigure()
+    {
+        throw new NotImplementedException();
+    }
 }
