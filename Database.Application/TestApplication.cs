@@ -26,6 +26,11 @@ public readonly struct TestApplication(IDomainRepositoryFactory repository) : IA
         throw new NotImplementedException();
     }
 
+    Task<AppConfigure> IApplication.LoadAppConfigure()
+    {
+        throw new NotImplementedException();
+    }
+
     async Task<(string, string)> IApplication.LoadConfigure()
     {
         var configure = new TaskCompletionSource<(string, string)>();
