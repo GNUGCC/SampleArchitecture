@@ -6,6 +6,7 @@
   </Folder>
   <Folder Name="/Delivery/">
     <Project Path="Database.Delivery/Delivery.Extensions.csproj" Id="3e590e27-38d4-42e3-a9c3-9f332c05e75a" />
+    <Project Path="Delivery.Application/Delivery.Application.csproj" Id="ee0d2c52-6c9e-4943-90fa-b5d2b93326bb" />
   </Folder>
   <Folder Name="/Domain/">
     <Project Path="Database.Factory/Domain.Factory.csproj" Id="3645cc7b-f723-49b8-988a-b39eda30ea17" />

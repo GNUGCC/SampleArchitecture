@@ -9,7 +9,7 @@ public readonly struct MenuItem(string name, string? description = default, bool
         Execute(command);
     }
 
-    public readonly void Execute(ICommand? command)
+    internal readonly void Execute(ICommand? command)
     {
         if (enabled is false || command is null) return;
         command.Execute();

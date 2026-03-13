@@ -4,12 +4,17 @@ namespace Infranstracture.Test;
 
 public readonly struct TestAccountRepository : IAccountRepository
 {
-    Task<AccountConfigure> IAccountRepository.LoadAccountConfigure()
+    Task<string?> IAccountRepository.QueryAccount(string accountId)
     {
         throw new NotImplementedException();
     }
 
-    Task<string?> IAccountRepository.QueryAccount(string accountId)
+    Task<string?> IAccountRepository.QueryLine(string id)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<string?> IAccountRepository.QueryRole(string id)
     {
         throw new NotImplementedException();
     }

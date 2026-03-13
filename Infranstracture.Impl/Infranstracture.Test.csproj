@@ -8,8 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Database.Factory\Domain.Factory.csproj" />
-    <ProjectReference Include="..\Domain.AppConfig\Domain.AppConfigure.csproj" />
-    <ProjectReference Include="..\Domain.Impl\Domain.Account.csproj" />
   </ItemGroup>
 
 </Project>
