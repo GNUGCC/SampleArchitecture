@@ -1,27 +1,14 @@
 ﻿namespace Domain.AppConfigure;
 
-public readonly struct AppConfigure
+public readonly struct AppConfigure(string name, string description, IAppConfigRepository repository)
 {
-    readonly IAppConfigRepository _repository;
-
-    string Name { get; }
-
-    string Description { get; }
-
-    AppConfigure(string name, string description, IAppConfigRepository repository)
+    internal static AppConfigure SaveConfigure(string name, string description)
     {
-        Name = name;
-        Description = description;
-        _repository = repository;
+        return new(name, description, default);
     }
 
-    public static AppConfigure SaveConfigure(string name, string description)
+    internal readonly void Export(Action<string, string> export)
     {
-        return new(name, description);
-    }
-
-    public readonly void Export(Action<string, string> export)
-    {
-        new AppConfigure(Name, Description).Export(export);
+        new AppConfigure(name, description, repository).Export(export);
     }
 }

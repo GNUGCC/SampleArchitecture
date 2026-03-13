@@ -2,5 +2,5 @@
 
 public interface IAppConfigRepository
 {
-    Task<AppConfigure> LoadAppConfigure();
+    Task<string?> LoadAppName();
 }

@@ -26,9 +26,13 @@ public readonly struct TestApplication(IDomainRepositoryFactory repository) : IA
         return _accountRepository.LoadAccountConfigure();
     }
 
-    Task<AppConfigure> IApplication.LoadConfigure()
+    async Task<(string, string)> IApplication.LoadConfigure()
     {
-        return _appConfigRepository.LoadAppConfigure();
+        var configure = new TaskCompletionSource<(string, string)>();
+        var result = await _appConfigRepository.LoadAppName();
+        result.Export((name, line) => configure.SetResult((name, line)));
+
+        return await configure.Task;
     }
 
     Task<MenuConfigure> IApplication.QueryMenuConfigure()

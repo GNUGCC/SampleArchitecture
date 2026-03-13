@@ -1,13 +1,12 @@
 ﻿using Application.Interface.Menu;
 using Domain.Account;
-using Domain.AppConfigure;
 using Domain.Menu;
 
 namespace Application.Interface;
 
 public interface IApplication
 {
-    Task<AppConfigure> LoadConfigure();
+    Task<(string name, string line)> LoadConfigure();
 
     Task<AccountConfigure> LoadAccountConfigure();
 
