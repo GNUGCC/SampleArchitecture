@@ -1,9 +1,10 @@
 ﻿using Application.Interface;
+using Application.Interface.Menu;
+
 using Domain.Menu;
 using Domain.Factory;
 using Domain.Account;
 using Domain.AppConfigure;
-using Application.Interface.Menu;
 
 namespace Application.Impl;
 
@@ -43,5 +44,10 @@ public readonly struct TestApplication(IDomainRepositoryFactory repository) : IA
     Task<MenuConfigure> IApplication.QueryMenuConfigure()
     {
         return Task.FromResult(new MenuConfigure(_menuRepository));
+    }
+
+    Task<bool> IApplication.SelectItem(MenuItem item)
+    {
+        throw new NotImplementedException();
     }
 }
