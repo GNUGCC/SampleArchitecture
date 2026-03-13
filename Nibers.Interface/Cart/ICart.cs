@@ -3,4 +3,6 @@
 public interface ICart
 {
     Task<bool> AddOrder();
+
+    Task<CartConfigure> QueryCartConfigure();
 }

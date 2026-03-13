@@ -1,5 +1,5 @@
 ﻿using Domain.Menu;
-using Application.Menu;
+using Application.Interface.Menu;
 
 namespace Application.Impl;
 

@@ -1,6 +1,6 @@
 ﻿using Domain.Menu;
 
-namespace Application.Menu;
+namespace Application.Interface.Menu;
 
 public readonly struct MenuConfigure(IMenuRepository repository)
 {
