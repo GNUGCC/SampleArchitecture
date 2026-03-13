@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
-using Application.Interface;
 using Domain.Factory;
 using Delivery.Extensions;
 
