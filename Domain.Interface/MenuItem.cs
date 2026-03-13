@@ -1,6 +1,6 @@
 ﻿using Domain.Command;
 
-namespace Application.Interface.Menu;
+namespace Domain.Menu;
 
 public readonly struct MenuItem(string name, string? description = default, bool enabled = true, ICommand? command = default)
 {

@@ -3,4 +3,6 @@
 public interface IAccountRepository
 {
     Task<AccountConfigure> LoadAccountConfigure();
+
+    Task<string?> QueryAccount(string accountId);
 }
