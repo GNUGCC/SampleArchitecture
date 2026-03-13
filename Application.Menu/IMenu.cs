@@ -1,6 +1,6 @@
 ﻿using Domain.Menu;
 
-namespace Application.Interface.Menu;
+namespace Application.Menu;
 
 public interface IMenu
 {
