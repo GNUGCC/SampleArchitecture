@@ -2,6 +2,10 @@
 
 public readonly struct AppConfigure(string name, string description, IAppConfigRepository repository)
 {
+    internal static void LoadAppConfigure(AppConfigure appConfigure)
+    {
+    }
+
     internal static AppConfigure SaveConfigure(string name, string description)
     {
         return new(name, description, default);
