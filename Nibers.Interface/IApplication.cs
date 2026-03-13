@@ -8,7 +8,7 @@ public interface IApplication
 {
     Task<(string name, string line)> LoadConfigure();
 
-    Task<AppConfigure> QueryAppConfigure();
+    Task<AppConfigure> LoadAppConfigure();
 
     Task<AccountConfigure> LoadAccountConfigure();
 

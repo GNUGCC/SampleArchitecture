@@ -1,6 +1,6 @@
 ﻿using Application.Interface.Cart;
 
-namespace Application.Impl.Cart;
+namespace Application.Impl;
 
 readonly struct CartLogic : ICart
 {
