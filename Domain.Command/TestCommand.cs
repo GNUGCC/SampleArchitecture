@@ -1,6 +1,6 @@
 ﻿namespace Domain.Command;
 
-public readonly struct Command(Action execute, Action? unExecute) : ICommand
+public readonly struct Command(Action? execute, Action? unExecute) : ICommand
 {
     public static ICommand Create(Action execute, Action? unExecute = default)
     {
@@ -9,7 +9,7 @@ public readonly struct Command(Action execute, Action? unExecute) : ICommand
 
     void ICommand.Execute()
     {
-        execute.Invoke();
+        execute?.Invoke();
     }
 
     void ICommand.UnExecute()
