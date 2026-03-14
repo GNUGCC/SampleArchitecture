@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Application/">
     <Project Path="Application.Extensions/Application.Extensions.csproj" Id="0b9e8b0d-88a6-48e1-aaa9-328649904bd8" />
+    <Project Path="Application.Factory/Application.Factory.csproj" Id="3b2c7d9c-7c35-4300-b7a9-c8eb1ff2ef84" />
     <Project Path="Database.Application/Application.Impl.csproj" Id="a6652865-6b22-4c46-8ff3-29efe0e28c44" />
     <Project Path="Nibers.Interface/Application.Interface.csproj" Id="be3c09b9-6eb0-446b-b0f3-27ee2f39af5f" />
   </Folder>

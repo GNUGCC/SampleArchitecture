@@ -1,4 +1,5 @@
 ﻿using Application.Interface.Menu;
+
 using Domain.Account;
 using Domain.AppConfigure;
 
@@ -14,7 +15,7 @@ public interface IApplication
 
     Task<MenuConfigure> QueryMenuConfigure();
 
-    Task<bool> SelectItem(MenuItem item);
+    Task<bool> SelectItem(IMenuItem item);
 
     Task<IMenu> GetCommandMenu();
 

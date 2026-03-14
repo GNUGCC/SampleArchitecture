@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Configuration;
 
 using Domain.Factory;
+using Domain.Command;
 using Delivery.Extensions;
+using Application.Interface.Menu;
 
 namespace TestProject1
 {
@@ -16,7 +18,7 @@ namespace TestProject1
         {
             var test = new Tests();
             test.Setup();
-            await test.TestCreateMenuRepository();
+            await test.TestMenuLogic();
             //var database = serviceProvider.GetRequiredService<IDatabase>();
         }
 
@@ -33,9 +35,41 @@ namespace TestProject1
         }
 
         [Test]
-        public async Task TestCreateMenuRepository()
+        public async Task TestMenuLogic()
         {
-            var menuRepository = _databaseFactory.CreateMenuRepository();
+            var testmenu = MenuFactory.CreateMenu(menuitem =>
+            {
+                menuitem
+                .AddMenuItem("TestMenuItem1", "Test description1", command: () => Console.WriteLine("MenuItem1 click"))
+                .AddMenuItem("TestMenuItem2", "Test description2", command: () => Console.WriteLine("MenuItem2 click"))
+                .AddMenuItem("TestMenuItem3", "Test description3", command: () => Console.WriteLine("MenuItem3 click"));
+            });
+
+            await testmenu.Select("1");
+            await testmenu.Select("2");
+            await testmenu.Select("3");
+
+            var menu = MenuFactory
+                .CreateMenuItemBuilder()
+                .AddMenuItem("TestMenuItem1", "Test description1", command: Command.Create(() => Console.WriteLine("MenuItem1 click")))
+                .AddMenuItem("TestMenuItem2", "Test description2", command: Command.Create(() => Console.WriteLine("MenuItem2 click")))
+                .AddMenuItem("TestMenuItem3", "Test description3", command: Command.Create(() => Console.WriteLine("MenuItem3 click")))
+                .Build();
+
+            await menu.Select("1");
+            await menu.Select("2");
+            await menu.Select("3");
+            //var menuRepository = _databaseFactory.CreateMenuRepository();
+            //var queryMenus = await menuRepository.QueryMenuItem();
+            //var menuConfig = new MenuConfigure(menuRepository);
+
+            //foreach (var item in queryMenus)
+            //{
+            //    menuConfig.Title = item;
+            //    menuConfig.Enabled = default;
+            //}
+
+            //var build = MenuConfigure.Build();
         }
 
         [Test]

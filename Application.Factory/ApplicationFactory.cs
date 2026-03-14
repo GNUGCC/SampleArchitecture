@@ -1,10 +1,12 @@
-﻿using Application.Interface;
-using Domain.Menu;
-using Domain.Factory;
+﻿using Application.Impl;
+using Application.Interface;
+
 using Domain.Account;
 using Domain.AppConfigure;
+using Domain.Factory;
+using Domain.Menu;
 
-namespace Application.Impl;
+namespace Application.Factory;
 
 public readonly struct ApplicationFactory : IApplicationFactory
 {

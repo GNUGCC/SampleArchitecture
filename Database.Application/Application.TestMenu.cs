@@ -6,45 +6,75 @@ namespace Application.Impl;
 
 readonly struct TestMenu(string[] items, IMenuRepository repository) : IMenu
 {
+    readonly MenuItemBuilder _menuBuilder = new();
+
     int Count { get; }
 
-    Task<bool> IMenu.AddMenuItem(string[] Titles, bool[]? predicates = default)
+    IMenu Context => this;
+
+    Task<bool> IMenu.AddMenuItem(string[] titles, bool[]? predicates, Func<ICommand[]>? command)
     {
+        var commands = command?.Invoke();
+        _menuBuilder.AddMenuItem(name: titles[0], command: Command.Create(default));
+        //var menuItem = MenuFactory.CreateMenuItem(name: Titles[0], command: Command.Create(default));
         return Task.FromResult(true);
     }
 
     Task<bool> IMenu.AddMenuItem(Func<MenuConfigure, int, bool> configure)
     {
+        var menu = new MenuConfigure(repository)
+        {
+            Title = string.Empty,
+            Enabled = default,
+            Command = Command.Create(default)
+        };
+
+        //var menuItem = MenuFactory.CreateMenuItem(name: default, command: Command.Create(default));
+        var menuItems = MenuConfigure.Build();
         return Task.FromResult(true);
     }
 
-    Task<bool> IMenu.AddMenuItem(MenuItem[] item)
+    Task<bool> IMenu.AddMenuItem(IMenuItem[] item)
     {
         return Task.FromResult(true);
     }
 
-    void IMenu.Select(MenuItem menuItem)
+    Task IMenu.Select(string id)
     {
-        menuItem.Execute();
+        return Task.CompletedTask;
     }
 
-    MenuItem[]? IMenu.GetMenuItems()
+    Task IMenu.Select(IMenuItem menuItem)
     {
-        var test = new MenuItem("Test1", command: Command.Create(TestCommand));
-        return [new("Test1"), test];        
+        menuItem.Command.Execute();
+        return Task.CompletedTask;
     }
 
-    async Task<MenuItem[]?> IMenu.GetMenuItems(Func<MenuItem, bool> selector)
+    Task<IMenuItem[]> IMenu.GetMenuItems()
+    {
+        var test1 = _menuBuilder
+            .AddMenuItem("Test", command: Command.Create(TestCommand))
+            .AddMenuItem("Test1", command: Command.Create(TestCommand))
+            .Build();
+
+        return test1.GetMenuItems();
+    }
+
+    async Task<IMenuItem[]> IMenu.GetMenuItems(Func<IMenuItem, bool> selector)
     {
         var menus = await repository.QueryMenu();
-        return [new(name: menus.ElementAt(0), enabled: false, command: Command.Create(MenuItemCommand)), new(name: menus.ElementAt(1), command: Command.Create(MenuItemCommand))];
+        return [];// [MenuFactory.CreateMenuItem(name: menus.ElementAt(0), enabled: false, command: Command.Create(OpenFile)), MenuFactory.CreateMenuItem(name: menus.ElementAt(1), command: Command.Create(SaveFile))];
     }
 
     static void TestCommand()
     {
     }
 
-    static void MenuItemCommand()
+    static void OpenFile()
+    {
+    }
+
+    static void SaveFile()
     {
     }
 }

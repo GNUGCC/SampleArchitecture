@@ -22,6 +22,11 @@ public readonly struct TestMenuRepository : IMenuRepository
         return Task.FromResult(_menus.ToArray());
     }
 
+    Task<string[]> IMenuRepository.QueryMenuItem()
+    {
+        return Task.FromResult<string[]>(["TestMenuItem1", "TestMenuItem2"]);
+    }
+
     Task<int> IMenuRepository.UpdateMenu(string source, string target)
     {
         return Task.FromResult(1);

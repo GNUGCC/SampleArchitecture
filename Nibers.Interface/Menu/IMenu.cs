@@ -1,16 +1,20 @@
-﻿namespace Application.Interface.Menu;
+﻿using Domain.Command;
+
+namespace Application.Interface.Menu;
 
 public interface IMenu
 {
-    Task<bool> AddMenuItem(string[] Titles, bool[]? predicates = default);
+    Task<bool> AddMenuItem(string[] titles, bool[]? predicates = default, Func<ICommand[]>? command = default);
 
     Task<bool> AddMenuItem(Func<MenuConfigure, int, bool> configure);
 
-    Task<bool> AddMenuItem(MenuItem[] item);
+    Task<bool> AddMenuItem(IMenuItem[] item);
 
-    void Select(MenuItem menuItem);
+    Task Select(string id);
 
-    MenuItem[]? GetMenuItems();
+    Task Select(IMenuItem menuItem);
 
-    Task<MenuItem[]?> GetMenuItems(Func<MenuItem, bool> selector);
+    Task<IMenuItem[]> GetMenuItems();
+
+    Task<IMenuItem[]> GetMenuItems(Func<IMenuItem, bool> selector);
 }

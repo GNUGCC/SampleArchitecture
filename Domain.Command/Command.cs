@@ -7,6 +7,12 @@ public readonly struct Command(Action? execute, Action? unExecute) : ICommand
         return new Command(execute, unExecute);
     }
 
+    public static ICommand Create(Func<bool> predicate, Action execute, Action? unExecute = default)
+    {
+        if (predicate.Invoke() is false) return Create(default);
+        return Create(execute, unExecute);
+    }
+
     void ICommand.Execute()
     {
         execute?.Invoke();

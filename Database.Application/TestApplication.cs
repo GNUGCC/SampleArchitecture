@@ -51,7 +51,7 @@ public readonly struct TestApplication(IDomainRepositoryFactory repository) : IA
         return Task.FromResult(new MenuConfigure(_menuRepository));
     }
 
-    Task<bool> IApplication.SelectItem(MenuItem item)
+    Task<bool> IApplication.SelectItem(IMenuItem item)
     {
         throw new NotImplementedException();
     }

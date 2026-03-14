@@ -21,7 +21,7 @@ public readonly struct DevlieryApplication(IApplication application)
         return application.QueryMenuConfigure();
     }
 
-    internal Task<bool> SelectMenu(MenuItem menuItem)
+    internal Task<bool> SelectMenu(IMenuItem menuItem)
     {
         return application.SelectItem(menuItem);
     }
