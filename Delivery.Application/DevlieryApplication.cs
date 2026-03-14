@@ -4,7 +4,7 @@ using Domain.AppConfigure;
 
 namespace Delivery.Application;
 
-readonly struct DevlieryApplication(IApplication application)
+public readonly struct DevlieryApplication(IApplication application)
 {
     internal Task<AppConfigure> QueryAppConfigure()
     {
@@ -19,5 +19,16 @@ readonly struct DevlieryApplication(IApplication application)
     internal Task<MenuConfigure> GetMenuConfigure()
     {
         return application.QueryMenuConfigure();
+    }
+
+    internal Task<bool> SelectMenu(MenuItem menuItem)
+    {
+        return application.SelectItem(menuItem);
+    }
+
+    internal DeliveryResponse QueryMenu(DeliveryRequest deliveryRequest)
+    {
+        var result = application.QueryMenu(deliveryRequest.Parameters, deliveryRequest.Datas);
+        return DeliveryResponse.Create(result.menu, result.menuitem);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Domain.Menu;
+using Domain.Command;
 using Application.Interface.Menu;
 
 namespace Application.Impl;
@@ -29,12 +30,16 @@ readonly struct TestMenu(string[] items, IMenuRepository repository) : IMenu
 
     MenuItem[]? IMenu.GetMenuItems()
     {
-        var test = new MenuItem("Test1");
-        return [new("Test1"), test];
+        var test = new MenuItem("Test1", command: Command.Create(TestCommand));
+        return [new("Test1"), test];        
     }
 
     MenuItem[]? IMenu.GetMenuItems(Func<MenuItem, bool> selector)
     {
         return [];
+    }
+
+    static void TestCommand()
+    {
     }
 }

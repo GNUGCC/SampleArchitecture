@@ -3,6 +3,8 @@ using Microsoft.Extensions.Configuration;
 
 using Domain.Factory;
 using Delivery.Extensions;
+using Application.Interface;
+using Application.Extensions;
 
 namespace TestProject1
 {
@@ -49,7 +51,7 @@ namespace TestProject1
 
             //var app = default(IApplication);
             //app.Version();
-            //var menus = await app.ShowCommandMenu();
+            //var menus = await app.GetCommandMenu();
             //var loadmenu = menus.ElementAt(0);
             //await loadmenu.AddMenuItem(["TestA", "TestB"], [true]);
             //Assert.That(loadmenu.Count, Is.EqualTo(2));

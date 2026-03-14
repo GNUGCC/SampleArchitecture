@@ -14,5 +14,9 @@ public interface IApplication
 
     Task<MenuConfigure> QueryMenuConfigure();
 
+    Task<bool> SelectItem(MenuItem item);
+
     Task<IMenu> GetCommandMenu();
+
+    (string[] menu, string[] menuitem) QueryMenu(string[] source, string[] items);
 }
