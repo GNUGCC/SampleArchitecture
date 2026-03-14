@@ -1,9 +1,19 @@
 ﻿namespace Domain.Command;
 
-public readonly struct TestCommand : ICommand
+public readonly struct Command(Action? execute, Action? unExecute) : ICommand
 {
+    public static ICommand Create(Action execute, Action? unExecute = default)
+    {
+        return new Command(execute, unExecute);
+    }
+
     void ICommand.Execute()
     {
-        throw new NotImplementedException();
+        execute?.Invoke();
+    }
+
+    void ICommand.UnExecute()
+    {
+        unExecute?.Invoke();
     }
 }
