@@ -12,5 +12,5 @@ public interface IMenu
 
     MenuItem[]? GetMenuItems();
 
-    MenuItem[]? GetMenuItems(Func<MenuItem, bool> selector);
+    Task<MenuItem[]?> GetMenuItems(Func<MenuItem, bool> selector);
 }

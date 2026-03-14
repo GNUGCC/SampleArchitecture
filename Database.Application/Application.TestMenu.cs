@@ -34,12 +34,17 @@ readonly struct TestMenu(string[] items, IMenuRepository repository) : IMenu
         return [new("Test1"), test];        
     }
 
-    MenuItem[]? IMenu.GetMenuItems(Func<MenuItem, bool> selector)
+    async Task<MenuItem[]?> IMenu.GetMenuItems(Func<MenuItem, bool> selector)
     {
-        return [];
+        var menus = await repository.QueryMenu();
+        return [new(name: menus.ElementAt(0), enabled: false, command: Command.Create(MenuItemCommand)), new(name: menus.ElementAt(1), command: Command.Create(MenuItemCommand))];
     }
 
     static void TestCommand()
+    {
+    }
+
+    static void MenuItemCommand()
     {
     }
 }

@@ -3,8 +3,6 @@ using Microsoft.Extensions.Configuration;
 
 using Domain.Factory;
 using Delivery.Extensions;
-using Application.Interface;
-using Application.Extensions;
 
 namespace TestProject1
 {
