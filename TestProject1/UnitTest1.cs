@@ -12,23 +12,30 @@ namespace TestProject1
         IServiceProvider _serviceProvider;
 
         [TearDown]
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var test = new Tests();
             test.Setup();
-            var serviceProvider = test._serviceProvider;
+            await test.TestCreateMenuRepository();
             //var database = serviceProvider.GetRequiredService<IDatabase>();
         }
 
         [SetUp]
         public void Setup()
         {
-            _serviceProvider = Host.CreateDefaultBuilder()
+            _serviceProvider = Host
+                .CreateDefaultBuilder()
                 .ConfigureServices(x => x.AddApplication())
                 .ConfigureHostConfiguration(x => x.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", optional: false))
                 .Build().Services;
 
-            _databaseFactory = default;
+            _databaseFactory = new Infranstracture.Test.DomainRepository();
+        }
+
+        [Test]
+        public async Task TestCreateMenuRepository()
+        {
+            var menuRepository = _databaseFactory.CreateMenuRepository();
         }
 
         [Test]

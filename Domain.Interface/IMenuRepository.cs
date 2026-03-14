@@ -4,7 +4,7 @@ public interface IMenuRepository
 {
     Task<string[]> QueryMenu();
 
-    Task<int> UpdateMenu();
+    Task<int> UpdateMenu(string source, string target);
 
-    Task<int> AddMenu();
+    Task<int> AddMenu(string menuname);
 }

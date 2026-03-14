@@ -4,18 +4,26 @@ namespace Infranstracture.Test;
 
 public readonly struct TestMenuRepository : IMenuRepository
 {
-    Task<int> IMenuRepository.AddMenu()
+    readonly IList<string> _menus;
+
+    public TestMenuRepository()
     {
-        throw new NotImplementedException();
+        _menus = ["TestMenu1", "TestMenu2"];
+    }
+
+    Task<int> IMenuRepository.AddMenu(string menuname)
+    {
+        _menus.Add(menuname);
+        return Task.FromResult(_menus.Count);
     }
 
     Task<string[]> IMenuRepository.QueryMenu()
     {
-        throw new NotImplementedException();
+        return Task.FromResult(_menus.ToArray());
     }
 
-    Task<int> IMenuRepository.UpdateMenu()
+    Task<int> IMenuRepository.UpdateMenu(string source, string target)
     {
-        throw new NotImplementedException();
+        return Task.FromResult(1);
     }
 }
