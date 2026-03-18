@@ -1,47 +1,26 @@
-﻿using Application.Interface;
-using Domain.Menu;
-using Domain.Factory;
-using Domain.Account;
-using Domain.AppConfigure;
+﻿using Delivery.Application;
+
+using Application.Interface;
 using Application.Interface.Menu;
+
+using Domain.AppConfigure;
 
 namespace Application.Impl;
 
-public readonly struct TestApplication(IDomainRepositoryFactory repository) : IApplication, IDevlieryApplication
+public readonly struct TestApplication(IApplication application) : IDevlieryApplication
 {
-    readonly IMenuRepository _menuRepository = repository.CreateMenuRepository();
-
-    readonly IAppConfigRepository _appConfigRepository = repository.CreateAppConfigRepository();
-
-    readonly IAccountRepository _accountRepository = repository.CreateAccountRepository();
-
-    async Task<IMenu> IApplication.GetCommandMenu()
+    Task<AppConfigure> IDevlieryApplication.QueryAppConfigure()
     {
-        var menus = await _menuRepository.QueryMenu();
-        return new TestMenu(menus, _menuRepository);
+        return application.LoadAppConfigure();
     }
 
-    Task<AccountConfigure> IApplication.LoadAccountConfigure()
+    Task<(string, string)> IDevlieryApplication.InitClientSystem()
     {
-        throw new NotImplementedException();
+        return application.LoadConfigure();
     }
 
-    Task<AppConfigure> IApplication.LoadAppConfigure()
+    Task<MenuConfigure> IDevlieryApplication.GetMenuConfigure()
     {
-        throw new NotImplementedException();
-    }
-
-    async Task<(string, string)> IApplication.LoadConfigure()
-    {
-        var configure = new TaskCompletionSource<(string, string)>();
-        var result = await _appConfigRepository.LoadAppName();
-        //result.Export((name, line) => configure.SetResult((name, line)));
-
-        return await configure.Task;
-    }
-
-    Task<MenuConfigure> IApplication.QueryMenuConfigure()
-    {
-        return Task.FromResult(new MenuConfigure(_menuRepository));
+        return application.QueryMenuConfigure();
     }
 }

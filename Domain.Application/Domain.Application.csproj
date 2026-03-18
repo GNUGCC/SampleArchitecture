@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Delivery.Application\Delivery.Application.csproj" />
     <ProjectReference Include="..\Nibers.Interface\Application.Interface.csproj" />
   </ItemGroup>
 
