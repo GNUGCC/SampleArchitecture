@@ -12,6 +12,7 @@
   <Folder Name="/Domain/">
     <Project Path="Database.Factory/Domain.Factory.csproj" Id="3645cc7b-f723-49b8-988a-b39eda30ea17" />
     <Project Path="Domain.AppConfig/Domain.AppConfigure.csproj" Id="2e1e269b-d397-499e-aa89-0d3946692de7" />
+    <Project Path="Domain.Application/Domain.Application.csproj" Id="b55ad9c9-0114-4bc0-933e-9268d19aa82d" />
     <Project Path="Domain.Command/Domain.Command.csproj" Id="cca821ed-c9af-47d1-9740-bce6ead52d0e" />
     <Project Path="Domain.Impl/Domain.Account.csproj" Id="cabd5d6c-a701-46c6-8e97-978bb928646f" />
     <Project Path="Domain.Interface/Domain.Menu.csproj" Id="3c9003cb-5e21-43b8-8f06-949b6e8b6024" />

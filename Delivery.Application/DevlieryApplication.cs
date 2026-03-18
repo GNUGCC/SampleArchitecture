@@ -4,31 +4,11 @@ using Domain.AppConfigure;
 
 namespace Delivery.Application;
 
-public readonly struct DevlieryApplication(IApplication application)
+public interface IDevlieryApplication
 {
-    internal Task<AppConfigure> QueryAppConfigure()
-    {
-        return application.LoadAppConfigure();
-    }
+    Task<AppConfigure> QueryAppConfigure();
 
-    internal Task<(string, string)> InitClientSystem()
-    {
-        return application.LoadConfigure();
-    }
+    Task<(string, string)> InitClientSystem();
 
-    internal Task<MenuConfigure> GetMenuConfigure()
-    {
-        return application.QueryMenuConfigure();
-    }
-
-    internal Task<bool> SelectMenu(IMenuItem menuItem)
-    {
-        return application.SelectItem(menuItem);
-    }
-
-    internal DeliveryResponse QueryMenu(DeliveryRequest deliveryRequest)
-    {
-        var result = application.QueryMenu(deliveryRequest.Parameters, deliveryRequest.Datas);
-        return DeliveryResponse.Create(result.menu, result.menuitem);
-    }
+    Task<MenuConfigure> GetMenuConfigure();
 }
