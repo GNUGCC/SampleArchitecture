@@ -7,7 +7,7 @@ using Application.Interface.Menu;
 
 namespace Application.Impl;
 
-public readonly struct TestApplication(IDomainRepositoryFactory repository) : IApplication
+public readonly struct TestApplication(IDomainRepositoryFactory repository) : IApplication, IDevlieryApplication
 {
     readonly IMenuRepository _menuRepository = repository.CreateMenuRepository();
 

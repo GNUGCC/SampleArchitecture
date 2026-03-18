@@ -4,19 +4,28 @@ using Domain.AppConfigure;
 
 namespace Delivery.Application;
 
-readonly struct DevlieryApplication(IApplication application)
+public interface IDevlieryApplication
 {
-    internal Task<AppConfigure> QueryAppConfigure()
+    Task<AppConfigure> QueryAppConfigure();
+
+    Task<(string, string)> InitClientSystem();
+
+    Task<MenuConfigure> GetMenuConfigure();
+}
+
+readonly struct DevlieryApplication(IApplication application) : IDevlieryApplication
+{
+    Task<AppConfigure> IDevlieryApplication.QueryAppConfigure()
     {
         return application.LoadAppConfigure();
     }
 
-    internal Task<(string, string)> InitClientSystem()
+    Task<(string, string)> IDevlieryApplication.InitClientSystem()
     {
         return application.LoadConfigure();
     }
 
-    internal Task<MenuConfigure> GetMenuConfigure()
+    Task<MenuConfigure> IDevlieryApplication.GetMenuConfigure()
     {
         return application.QueryMenuConfigure();
     }
