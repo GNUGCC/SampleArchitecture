@@ -2,7 +2,7 @@
 using Domain.Command;
 using Application.Interface.Menu;
 
-namespace Application.Impl;
+namespace Domain.Application;
 
 readonly struct TestMenu(string[] items, IMenuRepository repository) : IMenu
 {
@@ -15,7 +15,7 @@ readonly struct TestMenu(string[] items, IMenuRepository repository) : IMenu
     Task<bool> IMenu.AddMenuItem(string[] titles, bool[]? predicates, Func<ICommand[]>? command)
     {
         var commands = command?.Invoke();
-        _menuBuilder.AddMenuItem(name: titles[0], command: Command.Create(default));
+        _menuBuilder.AddMenuItem(name: titles[0], command: CommandCreater.Create(default));
         //var menuItem = MenuFactory.CreateMenuItem(name: Titles[0], command: Command.Create(default));
         return Task.FromResult(true);
     }
@@ -26,7 +26,7 @@ readonly struct TestMenu(string[] items, IMenuRepository repository) : IMenu
         {
             Title = string.Empty,
             Enabled = default,
-            Command = Command.Create(default)
+            Command = CommandCreater.Create(default)
         };
 
         //var menuItem = MenuFactory.CreateMenuItem(name: default, command: Command.Create(default));
@@ -53,8 +53,8 @@ readonly struct TestMenu(string[] items, IMenuRepository repository) : IMenu
     Task<IMenuItem[]> IMenu.GetMenuItems()
     {
         var test1 = _menuBuilder
-            .AddMenuItem("Test", command: Command.Create(TestCommand))
-            .AddMenuItem("Test1", command: Command.Create(TestCommand))
+            .AddMenuItem("Test", command: CommandCreater.Create(TestCommand))
+            .AddMenuItem("Test1", command: CommandCreater.Create(TestCommand))
             .Build();
 
         return test1.GetMenuItems();

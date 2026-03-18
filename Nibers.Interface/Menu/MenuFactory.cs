@@ -19,7 +19,7 @@ public readonly struct MenuItemBuilder
 
     public MenuItemBuilder AddMenuItem(string name, string? description = default, bool enabled = true, Action? command = default)
     {
-        return AddMenuItem(name, description, enabled, Command.Create(() => command?.Invoke()));
+        return AddMenuItem(name, description, enabled, CommandCreater.Create(() => command?.Invoke()));
     }
 
     public IMenu Build()
@@ -50,14 +50,14 @@ public readonly struct MenuFactory
 
     internal static IMenuItem CreateMenuItem(string name, string? description = default, bool enabled = true, ICommand? command = default)
     {
-        return new MenuItem(name, description, enabled, Command.Create(() => command?.Execute()));
+        return new MenuItem(name, description, enabled, CommandCreater.Create(() => command?.Execute()));
     }
 
     internal readonly struct MenuItem(string name, string description, bool enabled , ICommand command) : IMenuItem
     {
         readonly string _guid = $"{Guid.NewGuid()}";
 
-        ICommand IMenuItem.Command { get; } = Command.Create(command.Execute);
+        ICommand IMenuItem.Command { get; } = CommandCreater.Create(command.Execute);
 
         string IMenuItem.Id  => _guid;
 

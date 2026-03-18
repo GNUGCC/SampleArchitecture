@@ -2,7 +2,7 @@
   <Folder Name="/Application/">
     <Project Path="Application.Extensions/Application.Extensions.csproj" Id="0b9e8b0d-88a6-48e1-aaa9-328649904bd8" />
     <Project Path="Application.Factory/Application.Factory.csproj" Id="3b2c7d9c-7c35-4300-b7a9-c8eb1ff2ef84" />
-    <Project Path="Database.Application/Application.Impl.csproj" Id="a6652865-6b22-4c46-8ff3-29efe0e28c44" />
+    <Project Path="Application.Impl/Application.Impl.csproj" Id="022efd48-d1be-4032-b5ff-f3079bbd9aec" />
     <Project Path="Nibers.Interface/Application.Interface.csproj" Id="be3c09b9-6eb0-446b-b0f3-27ee2f39af5f" />
   </Folder>
   <Folder Name="/Delivery/">
@@ -12,7 +12,7 @@
   <Folder Name="/Domain/">
     <Project Path="Database.Factory/Domain.Factory.csproj" Id="3645cc7b-f723-49b8-988a-b39eda30ea17" />
     <Project Path="Domain.AppConfig/Domain.AppConfigure.csproj" Id="2e1e269b-d397-499e-aa89-0d3946692de7" />
-    <Project Path="Domain.Application/Domain.Application.csproj" Id="b55ad9c9-0114-4bc0-933e-9268d19aa82d" />
+    <Project Path="Domain.Application/Domain.Application.csproj" />
     <Project Path="Domain.Command/Domain.Command.csproj" Id="cca821ed-c9af-47d1-9740-bce6ead52d0e" />
     <Project Path="Domain.Impl/Domain.Account.csproj" Id="cabd5d6c-a701-46c6-8e97-978bb928646f" />
     <Project Path="Domain.Interface/Domain.Menu.csproj" Id="3c9003cb-5e21-43b8-8f06-949b6e8b6024" />

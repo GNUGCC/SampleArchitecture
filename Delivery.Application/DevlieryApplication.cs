@@ -1,14 +1,10 @@
-﻿using Application.Interface;
-using Application.Interface.Menu;
-using Domain.AppConfigure;
-
-namespace Delivery.Application;
+﻿namespace Delivery.Application;
 
 public interface IDevlieryApplication
 {
-    Task<AppConfigure> QueryAppConfigure();
+    Task<DeliveryResponse> QueryAppConfigure(DeliveryRequest request);
 
-    Task<(string, string)> InitClientSystem();
+    Task<DeliveryResponse> InitClientSystem(DeliveryRequest request);
 
-    Task<MenuConfigure> GetMenuConfigure();
+    Task<DeliveryResponse> GetMenuConfigure(DeliveryRequest request);
 }

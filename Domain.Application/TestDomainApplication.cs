@@ -29,11 +29,6 @@ public readonly struct TestDomainApplication(IDomainRepositoryFactory repository
         throw new NotImplementedException();
     }
 
-    Task<AppConfigure> IApplication.LoadAppConfigure()
-    {
-        throw new NotImplementedException();
-    }
-
     Task<AppConfigure.AppConfigure> IApplication.LoadAppConfigure()
     {
         throw new NotImplementedException();
@@ -48,8 +43,18 @@ public readonly struct TestDomainApplication(IDomainRepositoryFactory repository
         return await configure.Task;
     }
 
+    (string[] menu, string[] menuitem) IApplication.QueryMenu(string[] source, string[] items)
+    {
+        throw new NotImplementedException();
+    }
+
     Task<MenuConfigure> IApplication.QueryMenuConfigure()
     {
         return Task.FromResult(new MenuConfigure(_menuRepository));
+    }
+
+    Task<bool> IApplication.SelectItem(IMenuItem item)
+    {
+        throw new NotImplementedException();
     }
 }

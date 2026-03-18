@@ -1,10 +1,10 @@
 ﻿namespace Domain.Command;
 
-public readonly struct Command(Action? execute, Action? unExecute) : ICommand
+public readonly struct CommandCreater(Action? execute, Action? unExecute) : ICommand
 {
     public static ICommand Create(Action execute, Action? unExecute = default)
     {
-        return new Command(execute, unExecute);
+        return new CommandCreater(execute, unExecute);
     }
 
     public static ICommand Create(Func<bool> predicate, Action execute, Action? unExecute = default)

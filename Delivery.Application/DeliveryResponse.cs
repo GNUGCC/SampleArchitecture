@@ -1,6 +1,6 @@
 ﻿namespace Delivery.Application;
 
-readonly struct DeliveryResponse
+public readonly struct DeliveryResponse
 {
     internal static DeliveryResponse Create(string[] paramters, string[] datas)
     {

@@ -8,7 +8,7 @@ readonly struct Menu(ICollection<IMenuItem> menuItems) : IMenu, IMenuItem
 
     string IMenuItem.Id => $"{menuItems.Count}";
 
-    ICommand IMenuItem.Command => Command.Create(ShowMenuItem);
+    ICommand IMenuItem.Command => CommandCreater.Create(ShowMenuItem);
 
     Task<bool> IMenu.AddMenuItem(string[] titles, bool[]? predicates, Func<ICommand[]>? command)
     {

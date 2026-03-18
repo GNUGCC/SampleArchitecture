@@ -51,9 +51,9 @@ namespace TestProject1
 
             var menu = MenuFactory
                 .CreateMenuItemBuilder()
-                .AddMenuItem("TestMenuItem1", "Test description1", command: Command.Create(() => Console.WriteLine("MenuItem1 click")))
-                .AddMenuItem("TestMenuItem2", "Test description2", command: Command.Create(() => Console.WriteLine("MenuItem2 click")))
-                .AddMenuItem("TestMenuItem3", "Test description3", command: Command.Create(() => Console.WriteLine("MenuItem3 click")))
+                .AddMenuItem("TestMenuItem1", "Test description1", command: CommandCreater.Create(() => Console.WriteLine("MenuItem1 click")))
+                .AddMenuItem("TestMenuItem2", "Test description2", command: CommandCreater.Create(() => Console.WriteLine("MenuItem2 click")))
+                .AddMenuItem("TestMenuItem3", "Test description3", command: CommandCreater.Create(() => Console.WriteLine("MenuItem3 click")))
                 .Build();
 
             await menu.Select("1");
