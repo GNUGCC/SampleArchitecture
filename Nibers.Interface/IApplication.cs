@@ -9,7 +9,7 @@ public interface IApplication
 {
     Task<(string name, string line)> LoadConfigure();
 
-    Task<AppConfigure> LoadAppConfigure();
+    Task<AppConfigure> LoadAppConfigure(string id, params string[] args);
 
     Task<AccountConfigure> LoadAccountConfigure();
 

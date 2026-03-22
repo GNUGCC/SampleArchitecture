@@ -1,13 +1,16 @@
-﻿namespace Delivery.Application;
+﻿using Newtonsoft.Json;
 
-public readonly struct DeliveryResponse
+namespace Delivery.Application;
+
+public readonly struct DeliveryResponse(string[] paramters, string[] datas)
 {
-    internal static DeliveryResponse Create(string[] paramters, string[] datas)
+    public static DeliveryResponse Create(string json)
     {
-        return new(paramters, datas);
+        return JsonConvert.DeserializeObject<DeliveryResponse>(json);
     }
 
-    DeliveryResponse(string[] parameters, string[] datas)
+    public static DeliveryResponse Create(string[] paramters, string[] datas)
     {
+        return new(paramters, datas);
     }
 }

@@ -1,8 +1,9 @@
-﻿using Delivery.Application;
+﻿using Newtonsoft.Json;
 
+using Delivery.Application;
+using Domain.AppConfigure;
 using Application.Interface;
 using Application.Interface.Menu;
-using Domain.AppConfigure;
 
 namespace Application.Impl;
 
@@ -10,7 +11,7 @@ public readonly struct TestApplication(IApplication application) : IDevlieryAppl
 {
     Task<AppConfigure> QueryAppConfigure()
     {
-        return application.LoadAppConfigure();
+        return application.LoadAppConfigure(default);
     }
 
     Task<(string, string)> InitClientSystem()
@@ -23,9 +24,18 @@ public readonly struct TestApplication(IApplication application) : IDevlieryAppl
         return application.QueryMenuConfigure();
     }
 
-    Task<DeliveryResponse> IDevlieryApplication.QueryAppConfigure(DeliveryRequest request)
+    async Task<DeliveryResponse> IDevlieryApplication.QueryAppConfigure(DeliveryRequest request)
     {
-        throw new NotImplementedException();
+        var configure = await application.LoadAppConfigure(request.Parameters.First(), request.Datas);
+        return new();
+    }
+
+    async Task<string> IDevlieryApplication.QueryAppConfigure(string id, string[] datas)
+    {
+        var configure = await application.LoadAppConfigure(id, datas);
+        return JsonConvert.SerializeObject(new()
+        {
+        });
     }
 
     Task<DeliveryResponse> IDevlieryApplication.InitClientSystem(DeliveryRequest request)
