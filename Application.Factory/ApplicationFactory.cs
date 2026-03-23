@@ -12,7 +12,7 @@ public readonly struct ApplicationFactory : IApplicationFactory
 {
     IApplication IApplicationFactory.CreateApplication(IDomainRepositoryFactory factory)
     {
-        return new TestDomainApplication(default);
+        return new TestDomainApplication(factory);
     }
 
     IApplication IApplicationFactory.CreateApplication(IMenuRepository menuRepository, IAccountRepository accountRepository, IAppConfigRepository appConfigRepository)

@@ -29,7 +29,7 @@ public readonly struct TestDomainApplication(IDomainRepositoryFactory repository
         throw new NotImplementedException();
     }
 
-    Task<AppConfigure.AppConfigure> IApplication.LoadAppConfigure()
+    Task<AppConfigure.AppConfigure> IApplication.LoadAppConfigure(string id, params string[] args)
     {
         throw new NotImplementedException();
     }

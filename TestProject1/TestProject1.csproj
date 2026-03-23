@@ -21,8 +21,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application.Extensions\Application.Extensions.csproj" />
+    <ProjectReference Include="..\Application.Impl\Application.Impl.csproj" />
     <ProjectReference Include="..\Database.Delivery\Delivery.Extensions.csproj" />
     <ProjectReference Include="..\Database.Factory\Domain.Factory.csproj" />
+    <ProjectReference Include="..\Domain.Application\Domain.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -2,11 +2,11 @@
 
 public readonly struct DeliveryRequest(string[] parameters, string[] datas)
 {
-    internal string[] Parameters => parameters;
+    public string[] Parameters => parameters;
 
-    internal string[] Datas => datas;
+    public string[] Datas => datas;
 
-    internal static DeliveryRequest Create(string[] paramters, string[] datas)
+    public static DeliveryRequest Create(string[] paramters, string[] datas)
     {
         return new(paramters, datas);
     }
