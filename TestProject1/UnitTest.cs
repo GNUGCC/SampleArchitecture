@@ -19,6 +19,7 @@ public class Tests
 
         await CreateTest<TestAppConfigure>();
         await CreateTest<TestMenu>();
+        await CreateTest<TestCart>();
     }
 
     [SetUp]

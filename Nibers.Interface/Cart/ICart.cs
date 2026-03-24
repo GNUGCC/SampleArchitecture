@@ -2,7 +2,13 @@
 
 public interface ICart
 {
-    Task<bool> AddOrder();
+    Task<bool> AddOrder(CartContext cart);
 
-    Task<CartConfigure> QueryCartConfigure();
+    Task<bool> AddOrder(ICollection<CartContext> carts);
+
+    Task<CartContext> ReplaceOrder(CartContext cart);
+
+    Task<CartContext> QueryCartConfigure();
+
+    Task<decimal> PaymentCount();
 }
