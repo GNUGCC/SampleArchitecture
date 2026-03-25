@@ -11,4 +11,6 @@ public interface ICart
     Task<CartContext> QueryCartConfigure();
 
     Task<decimal> PaymentCount();
+
+    Task<decimal> GetPrice(string id);
 }
