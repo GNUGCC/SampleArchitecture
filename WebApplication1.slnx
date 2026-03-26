@@ -21,6 +21,9 @@
     <Project Path="Infranstracture.Dev/Infranstracture.Api.csproj" Id="079a752f-d4ce-4d4d-8404-15288b14a7e7" />
     <Project Path="Infranstracture.Impl/Infranstracture.Test.csproj" Id="120478c6-78ac-4266-b4b6-dfba7037fb5e" />
   </Folder>
+  <Folder Name="/Service/">
+    <Project Path="ServiceHelper/ServiceHelper.csproj" Id="d03031ed-11d1-4ed6-a61e-8fea30777292" />
+  </Folder>
   <Project Path="TestProject1/TestProject1.csproj" Id="6423b13c-c6df-4017-9bc2-e7162ab17d7c" />
   <Project Path="WebApplication1/WebApplication1.csproj" />
 </Solution>

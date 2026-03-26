@@ -1,28 +1,6 @@
-﻿namespace Application.Interface.Cart;
+﻿using ServiceHelper;
 
-public static class ExecuteHelper
-{
-    public static Task Assert<T>(T context, Func<T, Task> action)
-    {
-        return Assert(context, async x =>
-        {
-            await action.Invoke(context);
-            return Task.CompletedTask;
-        });
-    }
-
-    public async static Task<TResult> Assert<T, TResult>(T context, Func<T, Task<TResult>> action)
-    {
-        try
-        {
-            return await action.Invoke(context);
-        }
-        catch (Exception e)
-        {
-            throw;
-        }
-    }
-}
+namespace Application.Interface.Cart;
 
 public readonly struct OrderItem(string id, decimal price)
 {
@@ -30,7 +8,7 @@ public readonly struct OrderItem(string id, decimal price)
 
     public Task<CartContext> PutToCart()
     {
-        return CartContext.Create(id, default);
+        return ExecuteHelper.Assert(this, async context => await CartContext.Create(default, await CartHelper.GetCarter()));
     }
 }
 
@@ -42,9 +20,9 @@ public readonly struct CartContext
 
     ICart Cart { get; init; }
 
-    internal static async Task<CartContext> Create(string session, ICart cart)
+    internal static Task<CartContext> Create(string session, ICart cart)
     {
-        return Create(session, await cart.GetPrice(session), cart);
+        return ExecuteHelper.Assert(this, async context => Create(session, await cart.GetPrice(session), cart);
     }
 
     static CartContext Clone(CartContext cartContext)
