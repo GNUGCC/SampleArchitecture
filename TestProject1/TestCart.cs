@@ -1,7 +1,4 @@
-﻿using Delivery.Application;
-using Domain.Application;
-using Application.Impl;
-using Infranstracture.Test;
+﻿using Application.Factory;
 
 namespace TestProject1;
 
@@ -9,9 +6,22 @@ sealed class TestCart : IUnitTest
 {
     async Task IUnitTest.Run()
     {
-        var request = DeliveryRequest.Create(["Test1", "Test2"], ["Data1", "Data2"]);
-        IDevlieryApplication delivery = new TestApplication(new TestDomainApplication(new DomainRepository()));
-        var query = await delivery.QueryAppConfigure(request.Parameters.First(), request.Datas);
-        var response = DeliveryResponse.Create(query);
+        var orderitem = new OrderItem(default, default);
+        Assert.That(orderitem.Price, Is.EqualTo(0));
+
+        var cart = await orderitem.PutToCart();
+        Assert.That(orderitem.Price, Is.EqualTo(0));
+
+        await cart.SetPrice(100);
+        Assert.That(orderitem.Price, Is.EqualTo(100));
+
+        var neworder = new OrderItem(default, 1000);
+        Assert.That(orderitem.Price, Is.EqualTo(1000));
+
+        var newcart = await orderitem.PutToCart();
+        Assert.That(orderitem.Price, Is.EqualTo(1000));
+
+        await cart.SetPrice(3000);
+        Assert.That(orderitem.Price, Is.EqualTo(3000));
     }
 }

@@ -7,9 +7,9 @@ namespace Application.Interface;
 
 public interface IApplicationFactory
 {
-    IApplication CreateApplication(IDomainRepositoryFactory factory);
+    Task<IApplication> CreateApplication(IDomainRepositoryFactory factory);
 
-    IApplication CreateApplication(IMenuRepository menuRepository, IAccountRepository accountRepository, IAppConfigRepository appConfigRepository);
+    Task<IApplication> CreateApplication(IMenuRepository menuRepository, IAccountRepository accountRepository, IAppConfigRepository appConfigRepository);
 
-    IDomainRepositoryFactory CreateDomainRepositoryFactory();
+    Task<IDomainRepositoryFactory> CreateDomainRepositoryFactory();
 }

@@ -9,6 +9,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Application.Impl\Application.Impl.csproj" />
     <ProjectReference Include="..\Domain.Application\Domain.Application.csproj" />
+    <ProjectReference Include="..\Infranstracture.Impl\Infranstracture.Test.csproj" />
+    <ProjectReference Include="..\ServiceHelper\ServiceHelper.csproj" />
   </ItemGroup>
 
 </Project>

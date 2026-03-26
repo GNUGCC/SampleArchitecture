@@ -1,27 +1,29 @@
 ﻿using Application.Interface;
 
+using ServiceHelper;
 using Domain.Menu;
 using Domain.Factory;
 using Domain.Account;
 using Domain.Application;
 using Domain.AppConfigure;
+using Infranstracture.Test;
 
 namespace Application.Factory;
 
 public readonly struct ApplicationFactory : IApplicationFactory
 {
-    IApplication IApplicationFactory.CreateApplication(IDomainRepositoryFactory factory)
+    Task<IApplication> IApplicationFactory.CreateApplication(IDomainRepositoryFactory factory)
     {
-        return new TestDomainApplication(factory);
+        return ExecuteHelper.Assert(() => Task.FromResult<IApplication>(new TestDomainApplication(factory)));
     }
 
-    IApplication IApplicationFactory.CreateApplication(IMenuRepository menuRepository, IAccountRepository accountRepository, IAppConfigRepository appConfigRepository)
+    Task<IApplication> IApplicationFactory.CreateApplication(IMenuRepository menuRepository, IAccountRepository accountRepository, IAppConfigRepository appConfigRepository)
     {
-        throw new NotImplementedException();
+        return ExecuteHelper.Assert(() => Task.FromResult<IApplication>(new TestDomainApplication(default)));
     }
 
-    IDomainRepositoryFactory IApplicationFactory.CreateDomainRepositoryFactory()
+    Task<IDomainRepositoryFactory> IApplicationFactory.CreateDomainRepositoryFactory()
     {
-        throw new NotImplementedException();
+        return ExecuteHelper.Assert(() => Task.FromResult<IDomainRepositoryFactory>(new DomainRepository()));
     }
 }
