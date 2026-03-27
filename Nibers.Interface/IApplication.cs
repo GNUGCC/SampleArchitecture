@@ -19,5 +19,5 @@ public interface IApplication
 
     Task<IMenu> GetCommandMenu();
 
-    (string[] menu, string[] menuitem) QueryMenu(string[] source, string[] items);
+    Task<(string[] menu, string[] menuitem)> QueryMenu(string[] source, string[] items);
 }

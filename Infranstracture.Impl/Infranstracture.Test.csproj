@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Database.Factory\Domain.Factory.csproj" />
+    <ProjectReference Include="..\ServiceHelper\ServiceHelper.csproj" />
   </ItemGroup>
 
 </Project>

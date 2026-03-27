@@ -1,4 +1,5 @@
 ﻿using Domain.AppConfigure;
+using ServiceHelper;
 
 namespace Infranstracture.Test;
 
@@ -6,6 +7,6 @@ public readonly struct TestAppConfigRepository : IAppConfigRepository
 {
     Task<string?> IAppConfigRepository.LoadAppName()
     {
-        throw new NotImplementedException();
+        return ExecuteHelper.Assert(() => Task.FromResult<string?>(string.Empty));
     }
 }

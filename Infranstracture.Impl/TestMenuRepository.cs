@@ -1,4 +1,5 @@
 ﻿using Domain.Menu;
+using ServiceHelper;
 
 namespace Infranstracture.Test;
 
@@ -14,21 +15,21 @@ public readonly struct TestMenuRepository : IMenuRepository
     Task<int> IMenuRepository.AddMenu(string menuname)
     {
         _menus.Add(menuname);
-        return Task.FromResult(_menus.Count);
+        return ExecuteHelper.Assert(this, context => Task.FromResult(context._menus.Count));
     }
 
     Task<string[]> IMenuRepository.QueryMenu()
     {
-        return Task.FromResult(_menus.ToArray());
+        return ExecuteHelper.Assert(this, context => Task.FromResult(context._menus.ToArray()));
     }
 
     Task<string[]> IMenuRepository.QueryMenuItem()
     {
-        return Task.FromResult<string[]>(["TestMenuItem1", "TestMenuItem2"]);
+        return ExecuteHelper.Assert(() => Task.FromResult<string[]>(["TestMenuItem1", "TestMenuItem2"]));
     }
 
     Task<int> IMenuRepository.UpdateMenu(string source, string target)
     {
-        return Task.FromResult(1);
+        return ExecuteHelper.Assert(() => Task.FromResult(1));
     }
 }

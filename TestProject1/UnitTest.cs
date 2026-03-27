@@ -14,8 +14,8 @@ public class Tests
     [TearDown]
     public static async Task Main(string[] args)
     {
-        //var test = new Tests();
-        //test.Setup();
+        var test = new Tests();
+        test.Setup();
 
         //await CreateTest<TestAppConfigure>();
         //await CreateTest<TestMenu>();

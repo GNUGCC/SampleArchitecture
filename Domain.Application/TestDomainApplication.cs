@@ -1,10 +1,11 @@
 ﻿using Application.Interface;
 using Application.Interface.Menu;
 
-using Domain.Menu;
-using Domain.Factory;
 using Domain.Account;
 using Domain.AppConfigure;
+using Domain.Factory;
+using Domain.Menu;
+using ServiceHelper;
 
 namespace Domain.Application;
 
@@ -21,17 +22,17 @@ public readonly struct TestDomainApplication(IDomainRepositoryFactory repository
     async Task<IMenu> IApplication.GetCommandMenu()
     {
         var menus = await _menuRepository.QueryMenu();
-        return new TestMenu(menus, _menuRepository);
+        return await ExecuteHelper.Assert(this, context => Task.FromResult<IMenu>(new TestMenu(menus, context._menuRepository)));
     }
 
     Task<AccountConfigure> IApplication.LoadAccountConfigure()
     {
-        throw new NotImplementedException();
+        return ExecuteHelper.Assert(this, context => Task.FromResult(new AccountConfigure()));
     }
 
     Task<AppConfigure.AppConfigure> IApplication.LoadAppConfigure(string id, params string[] args)
     {
-        throw new NotImplementedException();
+        return ExecuteHelper.Assert(this, context => Task.FromResult(new AppConfigure.AppConfigure()));
     }
 
     async Task<(string, string)> IApplication.LoadConfigure()
@@ -43,9 +44,9 @@ public readonly struct TestDomainApplication(IDomainRepositoryFactory repository
         return await configure.Task;
     }
 
-    (string[] menu, string[] menuitem) IApplication.QueryMenu(string[] source, string[] items)
+    Task<(string[] menu, string[] menuitem)> IApplication.QueryMenu(string[] source, string[] items)
     {
-        throw new NotImplementedException();
+        return ExecuteHelper.Assert(this, context => Task.FromResult<(string[], string[])>(([], [])));
     }
 
     Task<MenuConfigure> IApplication.QueryMenuConfigure()
@@ -55,6 +56,6 @@ public readonly struct TestDomainApplication(IDomainRepositoryFactory repository
 
     Task<bool> IApplication.SelectItem(IMenuItem item)
     {
-        throw new NotImplementedException();
+        return ExecuteHelper.Assert(this, context => Task.FromResult<bool>(default));
     }
 }
